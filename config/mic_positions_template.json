@@ -1,0 +1,109 @@
+{
+  "_comment": "Gunshot Localization System Configuration Template",
+  "_instructions": {
+    "microphones": "Define exactly 8 microphones with unique IDs (1-8) and positions in meters",
+    "positioning_tips": [
+      "Minimum 0.5m spacing between microphones",
+      "Recommended array span: 5-100 meters",
+      "Avoid collinear arrangements",
+      "Ensure good angular coverage around perimeter",
+      "Use (0,0,0) as reference point for your coordinate system"
+    ],
+    "coordinate_system": "Right-handed coordinate system with Z=0 for 2D operation"
+  },
+  
+  "microphones": [
+    {
+      "id": 1,
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "_description": "Reference microphone at origin"
+    },
+    {
+      "id": 2,
+      "x": 10.0,
+      "y": 0.0,
+      "z": 0.0,
+      "_description": "East side of array"
+    },
+    {
+      "id": 3,
+      "x": 10.0,
+      "y": 10.0,
+      "z": 0.0,
+      "_description": "Northeast corner"
+    },
+    {
+      "id": 4,
+      "x": 0.0,
+      "y": 10.0,
+      "z": 0.0,
+      "_description": "North side of array"
+    },
+    {
+      "id": 5,
+      "x": 5.0,
+      "y": 5.0,
+      "z": 0.0,
+      "_description": "Center microphone"
+    },
+    {
+      "id": 6,
+      "x": 2.5,
+      "y": 2.5,
+      "z": 0.0,
+      "_description": "Inner southwest"
+    },
+    {
+      "id": 7,
+      "x": 7.5,
+      "y": 2.5,
+      "z": 0.0,
+      "_description": "Inner southeast"
+    },
+    {
+      "id": 8,
+      "x": 7.5,
+      "y": 7.5,
+      "z": 0.0,
+      "_description": "Inner northeast"
+    }
+  ],
+  
+  "system": {
+    "_comment": "System configuration parameters",
+    "sample_rate": 48000,
+    "_sample_rate_note": "Audio sampling rate in Hz (typical: 44100, 48000, 96000)",
+    
+    "sound_speed": 343.0,
+    "_sound_speed_note": "Speed of sound in m/s (varies with temperature: ~331 + 0.6*temp_celsius)",
+    
+    "detection_threshold_db": -20.0,
+    "_threshold_note": "Gunshot detection threshold in dB (more negative = more sensitive)",
+    
+    "buffer_duration": 2.0,
+    "_buffer_note": "Audio buffer duration in seconds",
+    
+    "min_confidence": 0.7,
+    "_confidence_note": "Minimum confidence for location output (0.0-1.0)"
+  },
+  
+  "_deployment_examples": {
+    "small_indoor": {
+      "description": "Small room or indoor space",
+      "array_size": "3-8 meters",
+      "microphone_spacing": "0.5-2 meters"
+    },
+    "outdoor_field": {
+      "description": "Open field or outdoor area",
+      "array_size": "20-50 meters", 
+      "microphone_spacing": "5-15 meters"
+    },
+    "perimeter_security": {
+      "description": "Perimeter monitoring",
+      "array_size": "50-100 meters",
+      "microphone_spacing": "10-25 meters"
+    }
+  }
+}
