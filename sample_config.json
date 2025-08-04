@@ -1,0 +1,66 @@
+{
+  "microphones": [
+    {"id": 1, "x": 0.0, "y": 0.0, "z": 0.0},
+    {"id": 2, "x": 2.0, "y": 0.0, "z": 0.0},
+    {"id": 3, "x": 0.0, "y": 2.0, "z": 0.0},
+    {"id": 4, "x": 2.0, "y": 2.0, "z": 0.0},
+    {"id": 5, "x": 1.0, "y": 1.0, "z": 1.5},
+    {"id": 6, "x": 3.0, "y": 1.0, "z": 0.0},
+    {"id": 7, "x": 1.0, "y": 3.0, "z": 0.0},
+    {"id": 8, "x": 3.0, "y": 3.0, "z": 0.0}
+  ],
+  "system": {
+    "sample_rate": 48000,
+    "sound_speed": 343.0,
+    "detection_threshold_db": -20.0,
+    "buffer_duration": 1.0,
+    "min_confidence": 0.6
+  },
+  "audio_capture": {
+    "device_id": null,
+    "channels": 8,
+    "chunk_size": 1024
+  },
+  "gunshot_detection": {
+    "method": "amplitude",
+    "amplitude_threshold": 0.1,
+    "frequency_bands": [100, 1000, 3000],
+    "min_duration_ms": 10,
+    "max_duration_ms": 500
+  },
+  "tdoa_localization": {
+    "correlation_method": "fft",
+    "max_delay_samples": 1000,
+    "interpolation_factor": 10,
+    "min_correlation": 0.3
+  },
+  "intensity_filter": {
+    "method": "rms",
+    "window_size": 1024,
+    "noise_floor_percentile": 10
+  },
+  "channel_selection": {
+    "strategy": "adaptive",
+    "min_channels": 4,
+    "quality_threshold": 0.5,
+    "learning_rate": 0.1
+  },
+  "pipeline": {
+    "processing_mode": "event_driven",
+    "max_processing_time": 0.1,
+    "error_recovery": true,
+    "health_monitoring": true
+  },
+  "output": {
+    "format": "console",
+    "file": null,
+    "include_metadata": true,
+    "precision": 2
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "logs/gunshot_localizer.log",
+    "max_size_mb": 10,
+    "backup_count": 5
+  }
+}
